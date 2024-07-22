@@ -8,7 +8,7 @@
         <LargeButton
           buttonText="Первичная"
           buttonColor="success"
-          @click="handleButtonClick"
+          @click="navigateToFirstTimePage"
         />
         <div class="button-description">
           Если вы проходите проверку знаний впервые
@@ -18,7 +18,7 @@
         <LargeButton
           buttonText="Очередная"
           buttonColor="success"
-          @click="handleButtonClickTwo"
+          @click="navigateToRegularPage"
         />
         <div class="button-description">
           Если Вам нужно подтвердить существующую группу, согласно графику
@@ -29,7 +29,7 @@
         <LargeButton
           buttonText="Внеочередная"
           buttonColor="success"
-          @click="handleButtonClickTwo"
+          @click="navigateToExtraordinaryPage"
         />
         <div class="button-description">
           Если Вам нужно повысить действующую группу, а также в случае смены
@@ -42,16 +42,22 @@
 
 <script lang="ts">
 import LargeButton from "../components/LargeButton.vue";
+import generateProtocol from "../components/builder";
+import router from "../router";
 export default {
   components: {
     LargeButton,
   },
   methods: {
-    handleButtonClick() {
-      console.log("Кнопка 1 нажата!");
+    navigateToRegularPage() {
+      router.push("/regular");
     },
-    handleButtonClickTwo() {
-      console.log("Кнопка 2 нажата!");
+    generateProtocol,
+    navigateToExtraordinaryPage() {
+      router.push("/extraordinary");
+    },
+    navigateToFirstTimePage() {
+      router.push("/first-time");
     },
   },
 };
@@ -59,12 +65,14 @@ export default {
 
 <style scoped>
 .wrapper {
+  height: 100%;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   gap: 20px;
+  backdrop-filter: blur(5px);
 }
 
 .button-container {
@@ -81,15 +89,22 @@ export default {
   gap: 20px;
 }
 
+h3 {
+  font-style: italic;
+  font-size: 22px;
+  margin: 20px 0;
+}
+
 h2,
 h3,
 .button-description {
-  color: #fff59d;
+  color: #ffd740;
 }
 
 .button-description {
   margin-left: 10px;
   max-width: 700px;
   font-size: 20px;
+  font-weight: 600;
 }
 </style>

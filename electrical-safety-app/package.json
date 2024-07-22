@@ -12,6 +12,7 @@
     "core-js": "^3.37.1",
     "docx": "^8.5.0",
     "roboto-fontface": "*",
+    "save-as": "^0.1.8",
     "vue": "^3.4.31",
     "vuetify": "^3.6.11"
   },
