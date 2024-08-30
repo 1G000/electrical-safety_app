@@ -1,32 +1,27 @@
 <template>
   <v-select
-    v-model="selectedValue"
     :items="options"
     item-text="label"
     item-value="value"
-    :style="{ backgroundColor: '#FFD700', color: '#333' }"
-    @change="onSelectChange"
+    :style="{
+      borderRadius: '10px',
+      backgroundColor: '#FFF3E0',
+      color: 'black',
+      width: '600px',
+      height: '80px',
+    }"
   />
-  <p>Выбрано: {{ selectedValue }}</p>
 </template>
 
-<script>
-export default {
-  props: {
-    options: {
-      type: Array,
-      required: true, // Сделаем опции обязательными
-    },
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  options: {
+    type: Array,
+    required: true,
   },
-  data() {
-    return {
-      selectedValue: null,
-    };
-  },
-  methods: {
-    onSelectChange(value) {
-      console.log(value);
-    },
-  },
-};
+});
 </script>
+
+<style></style>

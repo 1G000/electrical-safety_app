@@ -26,21 +26,17 @@ const routes = [
         path: "/extraordinary",
         component: () => import("../pages/Extraordinary.vue"),
       },
+      {
+        path: "/test",
+        component: () => import("../pages/TestPage.vue"),
+      },
+      {
+        path: "/results",
+        component: () => import("../pages/ResultsPage.vue"),
+      },
     ],
   },
 ];
-// {
-//   path: "/first-time",
-//   component: () => import("@/components/Layout.vue"),
-//   name: "FirsTimePage",
-//   children: [
-//     {
-//       path: "",
-//       component: () => import("@/pages/FirsTimePage.vue"),
-//     },
-//   ],
-// },
-// ];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

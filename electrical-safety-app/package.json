@@ -5,16 +5,20 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "server": "json-server -w src/data/employees.json --port 3001"
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
+    "axios": "^1.7.5",
     "core-js": "^3.37.1",
     "docx": "^8.5.0",
+    "json-server": "^1.0.0-beta.2",
     "roboto-fontface": "*",
     "save-as": "^0.1.8",
     "vue": "^3.4.31",
-    "vuetify": "^3.6.11"
+    "vuetify": "^3.6.11",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/types": "^7.24.7",

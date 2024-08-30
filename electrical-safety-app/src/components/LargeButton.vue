@@ -1,10 +1,15 @@
 <template>
   <v-btn
-    color="secondary"
+    color="primary"
     :disabled="disabled"
     :loading="isLoading"
-    @click="onClick"
-    style="height: 100px; width: 300px; font-size: 24px"
+    style="
+      height: 80px;
+      min-width: 300px;
+      font-size: 24px;
+      padding: 15px;
+      border-radius: 10px;
+    "
   >
     {{ buttonText }}
   </v-btn>
@@ -30,10 +35,6 @@ export default {
       default: false,
     },
   },
-  methods: {
-    onClick() {
-      this.$emit("click");
-    },
-  },
+  methods: {},
 };
 </script>

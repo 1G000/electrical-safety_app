@@ -13,7 +13,7 @@ export default createVuetify({
       light: {
         dark: false,
         colors: {
-          primary: colors.red.darken1, // #E53935
+          primary: colors.orange.lighten5,
           secondary: colors.amber.accent2, // #FFD740
         },
       },

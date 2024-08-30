@@ -1,36 +1,14 @@
 <template>
   <v-layout>
-    <AppHeader :title="title" />
-
-    <v-main
-      style="
-        height: 100vh;
-        background-image: url('../../public/icons/background.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-      "
-    >
+    <AppHeader title="Проверка знаний по электробезопасности" />
+    <v-main style="height: 100vh; overflow: auto">
       <router-view />
     </v-main>
   </v-layout>
 </template>
 
-<script>
+<script setup>
 import AppHeader from "./AppHeader.vue";
-
-export default {
-  name: "Layout",
-  components: [AppHeader],
-  data() {
-    return {
-      drawer: true,
-      rail: true,
-      rightDrawer: true,
-      rightRail: true,
-      title: "Приложение для проверки знаний по электробезопасности",
-    };
-  },
-};
 </script>
 
 <style scoped></style>
