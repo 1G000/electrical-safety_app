@@ -2,10 +2,10 @@
   "employees": [
     {
       "name": "Горбатовский Игорь Александрович",
-      "jobTitle": "Ведущий инженер",
-      "group": "IV",
-      "previousDate": "05.08.2023",
-      "category": "Административно-технический",
+      "jobTitle": "JavaScriptizer",
+      "group": "II",
+      "previousDate": "30.08.2024",
+      "category": "Оперативный",
       "departament": "Отдел №1",
       "id": "1fat"
     },
@@ -35,6 +35,15 @@
       "category": "Административно-технический",
       "departament": "Отдел №3",
       "id": "d498"
+    },
+    {
+      "id": "d0da",
+      "name": "asdasdad",
+      "jobTitle": "Бухгалтер",
+      "group": "II",
+      "previousDate": "30.08.2024",
+      "category": "Оперативно-ремонтный",
+      "departament": "Отдел №2"
     }
   ]
 }

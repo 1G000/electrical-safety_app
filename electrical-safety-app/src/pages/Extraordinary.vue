@@ -49,10 +49,10 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import router from "@/router";
 import store from "@/store";
-import { departaments, getEmployesByDept, getUserByName } from "@/store/async";
+import { getUserByName } from "@/store/async";
 import MainSelect from "@/components/MainSelect.vue";
 import LargeButton from "@/components/LargeButton.vue";
 import { categories, groups } from "@/data/categories";
@@ -66,17 +66,19 @@ let previousDate = ref("");
 let group = ref("");
 let newnames = ["Сначала выберите подразделение"];
 
-watch(
-  () => selectedDepartament.value,
-  () => {
-    newnames = getEmployesByDept(selectedDepartament);
-  }
-);
+const departaments = computed(() => store.getters.getDepartaments);
+watch(departaments);
 
 watch(
+  () => selectedDepartament.value,
+  (department) => {
+    newnames = store.getters.getEmployesByDept(department);
+  }
+);
+watch(
   () => employeeName.value,
-  async () => {
-    const user = await getUserByName(employeeName.value);
+  async (userName) => {
+    const user = await getUserByName(userName);
     if (user) {
       group.value = user[0].group;
       selectedProfession.value = user[0].jobTitle;

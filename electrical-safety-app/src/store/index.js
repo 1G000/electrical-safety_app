@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
+import { getData, getDepartaments } from "./async";
 
-export default createStore({
+const store = createStore({
   state: {
     employeeName: "",
     selectedDepartament: null,
@@ -13,6 +14,9 @@ export default createStore({
     id: "",
     previousDate: "",
     previousGroup: "",
+    employees: [],
+    departaments: [],
+    dataLoaded: false,
   },
   mutations: {
     updateEmployeeName(state, value) {
@@ -48,5 +52,46 @@ export default createStore({
     updatePreviousGroup(state, value) {
       state.previousGroup = value;
     },
+    setEmployees(state, employees) {
+      state.employees = employees;
+      state.departaments = getDepartaments(employees);
+      state.dataLoaded = true;
+    },
+  },
+  actions: {
+    async getEmployees({ commit }) {
+      commit("setEmployees", await getData());
+    },
+  },
+  getters: {
+    getProfessions: (state) => (dept) => {
+      const selectedData = state.employees.filter(
+        (el) => el.departament === dept
+      );
+      if (!selectedData) return [];
+      const professionsSet = new Set(selectedData.map((emp) => emp.jobTitle));
+      return Array.from(professionsSet);
+    },
+    getEmployesByDept: (state) => (dept) => {
+      const selectedData = state.employees.filter(
+        (el) => el.departament === dept
+      );
+      if (!selectedData) return [];
+      const namesSet = new Set(selectedData.map((emp) => emp.name));
+      return Array.from(namesSet);
+    },
+    getEmployees(state) {
+      return state.employees;
+    },
+    getDepartaments(state) {
+      return state.departaments;
+    },
+    isDataLoaded(state) {
+      return state.dataLoaded;
+    },
   },
 });
+
+store.dispatch("getEmployees");
+
+export default store;

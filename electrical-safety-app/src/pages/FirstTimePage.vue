@@ -42,8 +42,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { departaments, getProfessions } from "@/store/async";
+import { ref, watch, computed } from "vue";
 import { categories } from "@/data/categories";
 import router from "@/router";
 import store from "@/store";
@@ -64,12 +63,14 @@ const submitHandler = () => {
   router.push("/test");
 };
 
-const newdepartaments = departaments;
+const newdepartaments = computed(() => store.getters.getDepartaments);
+watch(newdepartaments);
+
 let newprofessions = [];
 watch(
   () => selectedDepartament.value,
-  () => {
-    newprofessions = getProfessions(selectedDepartament);
+  (department) => {
+    newprofessions = store.getters.getProfessions(department);
   }
 );
 </script>

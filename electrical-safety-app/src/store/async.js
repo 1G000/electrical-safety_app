@@ -23,38 +23,6 @@ export const getUserByName = async (name) => {
   }
 };
 
-const employees = await getData();
-
-const getDepartaments = () => {
-  if (employees) {
-    const departmentsAll = new Set();
-
-    for (const employee of employees) {
-      const dept = employee.departament;
-      departmentsAll.add(dept);
-    }
-    const departaments = Array.from(departmentsAll);
-    return departaments;
-  }
-  return [];
-};
-
-export const departaments = getDepartaments();
-
-export const getProfessions = (dept) => {
-  const selectedData = employees.filter((el) => el.departament === dept.value);
-  if (!selectedData) return [];
-  const professionsSet = new Set(selectedData.map((emp) => emp.jobTitle));
-  return Array.from(professionsSet);
-};
-
-export const getEmployesByDept = (dept) => {
-  const selectedData = employees.filter((el) => el.departament === dept.value);
-  if (!selectedData) return [];
-  const namesSet = new Set(selectedData.map((emp) => emp.name));
-  return Array.from(namesSet);
-};
-
 export const addNewEmployee = async (newEmployee) => {
   try {
     const response = await axios.post(baseUrl, newEmployee);
@@ -99,4 +67,18 @@ export const updateEmployee = async (
     console.error("Error updating employee previous date:", error);
     return null;
   }
+};
+
+export const getDepartaments = (employees) => {
+  if (employees) {
+    const departmentsAll = new Set();
+
+    for (const employee of employees) {
+      const dept = employee.departament;
+      departmentsAll.add(dept);
+    }
+    const departaments = Array.from(departmentsAll);
+    return departaments;
+  }
+  return [];
 };
