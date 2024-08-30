@@ -8,15 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/AppHeader.vue')['default']
-    Builder: typeof import('./src/components/builder.vue')['default']
-    Button: typeof import('./src/components/Button.vue')['default']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     LargeButton: typeof import('./src/components/LargeButton.vue')['default']
     Layout: typeof import('./src/components/Layout.vue')['default']
     MainSelect: typeof import('./src/components/MainSelect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Select: typeof import('./src/components/Select.vue')['default']
     TextInput: typeof import('./src/components/TextInput.vue')['default']
   }
 }
