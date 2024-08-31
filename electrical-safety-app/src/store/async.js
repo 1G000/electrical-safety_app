@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/employees";
+const baseUrl = "https://114489bc2b841e30.mokky.dev/employees";
 
 export const getData = async () => {
   try {
