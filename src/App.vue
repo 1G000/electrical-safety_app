@@ -26,7 +26,7 @@ main {
   align-items: center;
   gap: 20px;
   backdrop-filter: blur(5px);
-  background-image: url("../../public/icons/background2.jpg");
+  background-image: url("../public/icons/background2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
