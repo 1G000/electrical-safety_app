@@ -711,5 +711,4 @@ let questionsEasy = [
   // },
 ];
 
-questions = questions.sort(() => Math.random() - 0.5);
 export default questions;
