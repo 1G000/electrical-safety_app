@@ -37,6 +37,7 @@
         buttonText="Начать проверку!"
         :required="true"
       />
+      {{ token }}
     </form>
   </div>
 </template>
@@ -49,6 +50,8 @@ import store from "@/store";
 import MainSelect from "@/components/MainSelect.vue";
 import TextInput from "@/components/TextInput.vue";
 import LargeButton from "@/components/LargeButton.vue";
+
+const token = computed(() => store.state.authToken);
 
 let employeeName = ref("");
 let selectedDepartament = ref("");

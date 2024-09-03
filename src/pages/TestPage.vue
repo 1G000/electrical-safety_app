@@ -4,7 +4,10 @@
       <h2 class="test-header">Ответьте на все предложенные вопросы</h2>
 
       <ol>
-        <li v-for="(question, index) of questions" :key="question.id">
+        <li
+          v-for="(question, index) of questions.slice(0, 10)"
+          :key="question.id"
+        >
           <h4>Вопрос № {{ index + 1 }}</h4>
           <p class="question">{{ question.question }}</p>
           <v-radio-group :v-model="question.id">

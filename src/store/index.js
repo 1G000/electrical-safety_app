@@ -3,6 +3,7 @@ import { getData, getDepartaments } from "./async";
 
 const store = createStore({
   state: {
+    token: null,
     employeeName: "",
     selectedDepartament: null,
     selectedProfession: null,
@@ -57,10 +58,13 @@ const store = createStore({
       state.departaments = getDepartaments(employees);
       state.dataLoaded = true;
     },
+    setToken(state, token) {
+      state.token = token;
+    },
   },
   actions: {
     async getEmployees({ commit }) {
-      commit("setEmployees", await getData());
+      commit("setEmployees", await getData(localStorage.getItem("token")));
     },
   },
   getters: {
@@ -92,6 +96,6 @@ const store = createStore({
   },
 });
 
-store.dispatch("getEmployees");
+// store.dispatch("getEmployees");
 
 export default store;

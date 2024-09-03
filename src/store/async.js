@@ -2,19 +2,22 @@ import axios from "axios";
 
 const baseUrl = "https://114489bc2b841e30.mokky.dev/employees";
 
-export const getData = async () => {
-  try {
-    const response = await axios.get(baseUrl);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return [];
-  }
+export const getData = async (token) => {
+  const response = await axios.get(baseUrl, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
 };
 
 export const getUserByName = async (name) => {
   try {
-    const response = await axios.get(`${baseUrl}?name=${name}`);
+    const response = await axios.get(`${baseUrl}?name=${name}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
@@ -25,7 +28,11 @@ export const getUserByName = async (name) => {
 
 export const addNewEmployee = async (newEmployee) => {
   try {
-    const response = await axios.post(baseUrl, newEmployee);
+    const response = await axios.post(baseUrl, newEmployee, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error adding new employee:", error);
@@ -38,9 +45,17 @@ export const updateEmployeePreviousDate = async (
   newPreviousDate
 ) => {
   try {
-    const response = await axios.patch(`${baseUrl}/${employeeId}`, {
-      previousDate: newPreviousDate,
-    });
+    const response = await axios.patch(
+      `${baseUrl}/${employeeId}`,
+      {
+        previousDate: newPreviousDate,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating employee previous date:", error);
@@ -56,12 +71,20 @@ export const updateEmployee = async (
   newCategory
 ) => {
   try {
-    const response = await axios.patch(`${baseUrl}/${employeeId}`, {
-      group: newGroup,
-      jobTitle: newJobTitle,
-      previousDate: newPreviousDate,
-      category: newCategory,
-    });
+    const response = await axios.patch(
+      `${baseUrl}/${employeeId}`,
+      {
+        group: newGroup,
+        jobTitle: newJobTitle,
+        previousDate: newPreviousDate,
+        category: newCategory,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating employee previous date:", error);

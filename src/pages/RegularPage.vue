@@ -46,7 +46,7 @@
 import { ref, watch, computed } from "vue";
 import router from "@/router";
 import store from "@/store";
-import { getUserByName } from "@/store/async";
+import { getUserByName } from "../store/async";
 import MainSelect from "@/components/MainSelect.vue";
 import LargeButton from "@/components/LargeButton.vue";
 

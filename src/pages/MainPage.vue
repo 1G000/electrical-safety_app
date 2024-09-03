@@ -49,6 +49,8 @@ import LargeButton from "../components/LargeButton.vue";
 import store from "@/store";
 import router from "../router";
 
+store.dispatch("getEmployees");
+
 function navigateToRegularPage() {
   store.commit("updateReason", "Очередная");
   router.push("/regular");

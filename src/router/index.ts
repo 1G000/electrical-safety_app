@@ -15,6 +15,10 @@ const routes = [
     children: [
       { path: "", component: () => import("@/pages/MainPage.vue") },
       {
+        path: "authentication",
+        component: () => import("@/pages/UserAuth.vue"),
+      },
+      {
         path: "/first-time",
         component: () => import("../pages/FirstTimePage.vue"),
       },
@@ -41,6 +45,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from) => {
+  if (!localStorage.getItem("token")) {
+    if (to.path !== "/authentication") {
+      return { path: "/authentication" };
+    }
+  }
 });
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
