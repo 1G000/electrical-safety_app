@@ -31,12 +31,12 @@
 </template>
 
 <script setup>
-import questions from "@/data/questions";
-import { ref } from "vue";
+import { questions, questionsEasy } from "../data/questions";
+import { ref, computed } from "vue";
 import router from "@/router";
 import store from "@/store";
 import LargeButton from "@/components/LargeButton.vue";
-
+const group = computed(() => store.state.group);
 let answeredQuestions = ref([]);
 
 const clickRadio = () => {
@@ -69,7 +69,10 @@ const shuffle = (array) => {
   return array;
 };
 
-const randomQuestions = questions.sort(() => Math.random() - 0.5).slice(0, 10);
+const randomQuestions =
+  group.value === "II"
+    ? questionsEasy.sort(() => Math.random() - 0.5).slice(0, 10)
+    : questions.sort(() => Math.random() - 0.5).slice(0, 10);
 
 randomQuestions.forEach((question) => {
   question.shuffledAnswers = shuffle(question.answers);
