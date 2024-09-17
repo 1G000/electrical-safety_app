@@ -96,6 +96,4 @@ const store = createStore({
   },
 });
 
-// store.dispatch("getEmployees");
-
 export default store;
