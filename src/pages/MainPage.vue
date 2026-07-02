@@ -39,7 +39,7 @@
     </div>
     <div class="footer">
       <span>Отдел главного энергетика</span>
-      <span>2024</span>
+      <span>2026</span>
     </div>
   </div>
 </template>

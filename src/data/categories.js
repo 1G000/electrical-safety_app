@@ -6,4 +6,11 @@ export const categories = [
   "Оперативно-ремонтный",
 ];
 
-export const groups = ["II", "III", "IV"];
+export const groups = [
+  "II до 1000 В",
+  "III до 1000 В",
+  "IV до 1000 В",
+  "III до и выше 1000 В",
+  "IV до и выше 1000 В",
+  "V до и выше 1000 В",
+];

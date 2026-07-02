@@ -7,7 +7,7 @@
     <p>Причина проведения проверки знаний: {{ reason }}</p>
     <p>Подразделение: {{ selectedDepartament }}</p>
     <p>Должность: {{ selectedProfession }}</p>
-    <p>Группа по электробезопасности: {{ group }} до 1000В</p>
+    <p>Группа по электробезопасности: {{ group }}</p>
     <p>Категория персонала: {{ selectedCategory }}</p>
     <p>Количество ошибок: {{ errorsQtyFromStore }}</p>
     <p>Дата проведения следующей проверки знаний: {{ nextTimeDate }}</p>
@@ -78,7 +78,7 @@ const finishTest = () => {
       selectedProfession.value,
       currentDate,
       group.value,
-      selectedCategory.value
+      selectedCategory.value,
     );
   }
 

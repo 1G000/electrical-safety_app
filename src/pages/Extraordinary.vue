@@ -35,7 +35,7 @@
         class="select"
         v-model="group"
         :options="groups"
-        label="Требуемая группа до 1000В"
+        label="Требуемая группа"
         :required="true"
       />
 
@@ -73,7 +73,7 @@ watch(
   () => selectedDepartament.value,
   (department) => {
     newnames = store.getters.getEmployesByDept(department);
-  }
+  },
 );
 watch(
   () => employeeName.value,
@@ -90,7 +90,7 @@ watch(
     } else {
       group.value = "";
     }
-  }
+  },
 );
 
 const submitHandler = () => {

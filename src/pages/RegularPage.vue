@@ -27,7 +27,7 @@
       </div>
       <div class="data-field">
         <p>Действующая группа по электробезопасности:</p>
-        <span>{{ `${group} ` }} до 1000 В</span>
+        <span>{{ `${group} ` }} </span>
       </div>
       <div class="data-field">
         <p>Дата проведения предыдущей проверки знаний:</p>
@@ -65,7 +65,7 @@ watch(
   () => selectedDepartament.value,
   (department) => {
     newnames = store.getters.getEmployesByDept(department);
-  }
+  },
 );
 
 watch(
@@ -81,7 +81,7 @@ watch(
     } else {
       group.value = "";
     }
-  }
+  },
 );
 
 const submitHandler = () => {

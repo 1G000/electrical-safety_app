@@ -247,9 +247,9 @@ export default function generateProtocol() {
                   if (reason.value === "Первичная") {
                     return "Оценка, группа по электробезопасности: -";
                   } else if (reason.value === "Очередная") {
-                    return `Оценка, группа по электробезопасности: удовлетворительно, ${group.value} до 1000В`;
+                    return `Оценка, группа по электробезопасности: удовлетворительно, ${group.value} `;
                   } else if (reason.value === "Внеочередная") {
-                    return `Оценка, группа по электробезопасности: удовлетворительно, ${previousGroup.value} до 1000В`;
+                    return `Оценка, группа по электробезопасности: удовлетворительно, ${previousGroup.value} `;
                   } else {
                     return "Ошибка: Неизвестный тип аттестации";
                   }
@@ -353,7 +353,7 @@ export default function generateProtocol() {
             },
             children: [
               new docx.TextRun({
-                text: `Группа по электробезопасности: ${group.value} до 1000В`,
+                text: `Группа по электробезопасности: ${group.value} `,
                 size: 24,
               }),
             ],

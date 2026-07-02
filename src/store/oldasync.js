@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "./save.php";
+const baseUrl = "https://114489bc2b841e30.mokky.dev/employees";
 
 export const getData = async (token) => {
   const response = await axios.get(baseUrl, {
@@ -13,12 +13,12 @@ export const getData = async (token) => {
 
 export const getUserByName = async (name) => {
   try {
-    // PHP поддерживает фильтрацию по ?name=
     const response = await axios.get(`${baseUrl}?name=${name}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
+
     return response.data;
   } catch (error) {
     console.error("Error fetching user:", error);
@@ -42,11 +42,11 @@ export const addNewEmployee = async (newEmployee) => {
 
 export const updateEmployeePreviousDate = async (
   employeeId,
-  newPreviousDate,
+  newPreviousDate
 ) => {
   try {
     const response = await axios.patch(
-      `${baseUrl}/${employeeId}`, // Например: save.php/123
+      `${baseUrl}/${employeeId}`,
       {
         previousDate: newPreviousDate,
       },
@@ -54,7 +54,7 @@ export const updateEmployeePreviousDate = async (
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      },
+      }
     );
     return response.data;
   } catch (error) {
@@ -68,11 +68,11 @@ export const updateEmployee = async (
   newJobTitle,
   newPreviousDate,
   newGroup,
-  newCategory,
+  newCategory
 ) => {
   try {
     const response = await axios.patch(
-      `${baseUrl}/${employeeId}`, // Например: save.php/123
+      `${baseUrl}/${employeeId}`,
       {
         group: newGroup,
         jobTitle: newJobTitle,
@@ -83,11 +83,11 @@ export const updateEmployee = async (
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      },
+      }
     );
     return response.data;
   } catch (error) {
-    console.error("Error updating employee:", error);
+    console.error("Error updating employee previous date:", error);
     return null;
   }
 };
@@ -95,6 +95,7 @@ export const updateEmployee = async (
 export const getDepartaments = (employees) => {
   if (employees) {
     const departmentsAll = new Set();
+
     for (const employee of employees) {
       const dept = employee.departament;
       departmentsAll.add(dept);

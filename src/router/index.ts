@@ -19,23 +19,23 @@ const routes = [
         component: () => import("@/pages/UserAuth.vue"),
       },
       {
-        path: "/first-time",
+        path: "first-time",
         component: () => import("../pages/FirstTimePage.vue"),
       },
       {
-        path: "/regular",
+        path: "regular",
         component: () => import("../pages/RegularPage.vue"),
       },
       {
-        path: "/extraordinary",
+        path: "extraordinary",
         component: () => import("../pages/Extraordinary.vue"),
       },
       {
-        path: "/test",
+        path: "test",
         component: () => import("../pages/TestPage.vue"),
       },
       {
-        path: "/results",
+        path: "results",
         component: () => import("../pages/ResultsPage.vue"),
       },
     ],

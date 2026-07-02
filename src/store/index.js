@@ -58,9 +58,6 @@ const store = createStore({
       state.departaments = getDepartaments(employees);
       state.dataLoaded = true;
     },
-    setToken(state, token) {
-      state.token = token;
-    },
   },
   actions: {
     async getEmployees({ commit }) {
@@ -70,7 +67,7 @@ const store = createStore({
   getters: {
     getProfessions: (state) => (dept) => {
       const selectedData = state.employees.filter(
-        (el) => el.departament === dept
+        (el) => el.departament === dept,
       );
       if (!selectedData) return [];
       const professionsSet = new Set(selectedData.map((emp) => emp.jobTitle));
@@ -78,7 +75,7 @@ const store = createStore({
     },
     getEmployesByDept: (state) => (dept) => {
       const selectedData = state.employees.filter(
-        (el) => el.departament === dept
+        (el) => el.departament === dept,
       );
       if (!selectedData) return [];
       const namesSet = new Set(selectedData.map((emp) => emp.name));
